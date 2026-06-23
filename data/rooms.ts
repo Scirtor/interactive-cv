@@ -68,35 +68,12 @@ export const rooms: Room[] = [
     floorColor: "#20372f",
     objects: [
       {
-        id: "project-showcase",
-        title: "Project Showcase",
-        kind: "interactive",
-        x: 260,
-        y: 505,
-        radius: 170,
-        summary: "Preview Lost & Found and FastDown Bot.",
-        modal: {
-          title: "Featured Projects",
-          sections: [
-            {
-              heading: "Lost & Found",
-              body: "A service concept for reporting, searching, and returning lost items with clear moderation and data flows.",
-            },
-            {
-              heading: "FastDown Bot",
-              body: "A bot project highlighting automation, command handling, and practical deployment work.",
-            },
-          ],
-          actions: [],
-        },
-      },
-      {
         id: "resume-terminal",
         title: "Resume Terminal",
         kind: "interactive",
-        x: 500,
+        x: 540,
         y: 505,
-        radius: 140,
+        radius: 160,
         summary: "Resume, education, experience, and CV.",
         modal: {
           title: "Resume Terminal",
@@ -122,62 +99,12 @@ export const rooms: Room[] = [
         },
       },
       {
-        id: "character-portrait",
-        title: "Character Portrait",
-        kind: "interactive",
-        x: 640,
-        y: 455,
-        radius: 130,
-        summary: "Biography, interests, and goals.",
-        modal: {
-          title: "About Me",
-          sections: [
-            {
-              heading: "Biography",
-              body: "A cybersecurity-focused developer who likes building systems that are both practical and memorable.",
-            },
-            {
-              heading: "Interests",
-              body: "Web platforms, backend systems, Linux workflows, CTF tasks, and portfolio experiences that make technical work easier to inspect.",
-            },
-            {
-              heading: "Current goals",
-              body: "Grow as a security-minded engineer, ship stronger projects, and keep turning learning into visible artifacts.",
-            },
-          ],
-          actions: [],
-        },
-      },
-      {
-        id: "information-board",
-        title: "Information Board",
-        kind: "interactive",
-        x: 780,
-        y: 465,
-        radius: 140,
-        summary: "Highlights and recent activity.",
-        modal: {
-          title: "Highlights",
-          sections: [
-            {
-              heading: "Current projects",
-              body: "Interactive portfolio platform, Lost & Found, FastDown Bot, and security lab content.",
-            },
-            {
-              heading: "Achievements",
-              body: "Academic cybersecurity track, practical backend experience, and hands-on Linux/PostgreSQL/Django work.",
-            },
-          ],
-          actions: [],
-        },
-      },
-      {
         id: "skills-display",
         title: "Skills Display",
         kind: "interactive",
-        x: 1020,
+        x: 860,
         y: 505,
-        radius: 170,
+        radius: 160,
         summary: "Backend, DevOps, and core tooling.",
         modal: {
           title: "Skills",
