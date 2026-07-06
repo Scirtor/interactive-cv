@@ -75,6 +75,7 @@ export const rooms: Room[] = [
         y: 505,
         radius: 160,
         summary: "Resume, education, experience, and CV.",
+        sprite: "/sprites/pc.png",
         modal: {
           title: "Resume Terminal",
           sections: [
@@ -106,6 +107,7 @@ export const rooms: Room[] = [
         y: 505,
         radius: 160,
         summary: "Backend, DevOps, and core tooling.",
+        sprite: "/sprites/chalk_board.jpg",
         modal: {
           title: "Skills",
           sections: [

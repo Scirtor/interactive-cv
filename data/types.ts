@@ -22,6 +22,7 @@ export type PortfolioObject = {
   radius: number;
   summary: string;
   targetRoomId?: RoomId;
+  sprite?: string;
   modal: {
     title: string;
     sections: ModalSection[];

@@ -8,6 +8,7 @@ import {
   Container,
   type FederatedPointerEvent,
   Graphics,
+  Sprite,
   Text,
   TextStyle,
   type Texture,
@@ -187,10 +188,24 @@ export function GameCanvas({
         openRef.current(object);
       }
 
-      function drawScene() {
+      async function drawScene() {
         sceneLayer.removeChildren().forEach((child) => child.destroy({ children: true }));
         objectLayer.removeChildren().forEach((child) => child.destroy({ children: true }));
         const activeRoom = roomRef.current;
+
+        // Pre-load sprite textures
+        const spriteTextures = new Map<string, Texture>();
+        const spritePromises = activeRoom.objects
+          .filter((obj) => obj.sprite)
+          .map(async (obj) => {
+            try {
+              const texture = await Assets.load<Texture>(obj.sprite!);
+              spriteTextures.set(obj.id, texture);
+            } catch (e) {
+              // Silently fail if sprite doesn't load
+            }
+          });
+        await Promise.all(spritePromises);
 
         const background = new Graphics()
           .rect(0, 0, WORLD_WIDTH, WORLD_HEIGHT)
@@ -213,7 +228,8 @@ export function GameCanvas({
             : { x: object.x, y: object.y };
           objectPositions.set(object.id, position);
 
-          const node = createObjectNode(object, position);
+          const spriteTexture = spriteTextures.get(object.id);
+          const node = createObjectNode(object, position, spriteTexture);
           node.eventMode = "static";
           node.cursor = "pointer";
           node.on("pointertap", (event: FederatedPointerEvent) => {
@@ -392,12 +408,12 @@ export function GameCanvas({
         if (nextIsMobile !== isMobile) {
           isMobile = nextIsMobile;
           walkTargetRef.current = null;
-          drawScene();
+          drawScene().catch(() => {});
         }
         fitRoomToScreen();
       }
 
-      drawScene();
+      drawScene().catch(() => {});
       fitRoomToScreen();
       const tickerCallback = () => tick();
       app.ticker.add(tickerCallback);
@@ -405,7 +421,7 @@ export function GameCanvas({
       window.addEventListener("keyup", onKeyUp);
       window.addEventListener("resize", resize);
 
-      const redrawInterval = window.setInterval(drawScene, 150);
+      const redrawInterval = window.setInterval(() => drawScene().catch(() => {}), 150);
 
       cleanup = () => {
         window.clearInterval(redrawInterval);
@@ -523,7 +539,7 @@ function createDoor(x: number, labelText: string) {
   return door;
 }
 
-function createObjectNode(object: PortfolioObject, position: { x: number; y: number }) {
+function createObjectNode(object: PortfolioObject, position: { x: number; y: number }, spriteTexture?: Texture) {
   const node = new Container();
   node.x = position.x;
   node.y = position.y;
@@ -535,6 +551,18 @@ function createObjectNode(object: PortfolioObject, position: { x: number; y: num
     .stroke({ color, alpha: 0.84, width: 3 })
     .rect(-64, -82, 128, 68)
     .fill(object.kind === "navigation" ? "#183349" : "#17342a");
+
+  node.addChild(shape);
+
+  // Add sprite image if available and loaded
+  if (spriteTexture) {
+    const sprite = new Sprite(spriteTexture);
+    sprite.width = 110;
+    sprite.height = 55;
+    sprite.x = -55;
+    sprite.y = -27.5;
+    node.addChild(sprite);
+  }
 
   const title = new Text({
     text: object.title,
@@ -563,7 +591,7 @@ function createObjectNode(object: PortfolioObject, position: { x: number; y: num
   hint.anchor.set(0.5);
   hint.y = 86;
 
-  node.addChild(shape, title, hint);
+  node.addChild(title, hint);
   return node;
 }
 
