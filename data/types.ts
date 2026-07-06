@@ -23,6 +23,9 @@ export type PortfolioObject = {
   summary: string;
   targetRoomId?: RoomId;
   sprite?: string;
+  scale?: number;
+  hasDesk?: boolean;
+  spriteFill?: boolean;
   modal: {
     title: string;
     sections: ModalSection[];

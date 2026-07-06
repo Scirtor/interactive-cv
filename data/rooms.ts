@@ -68,46 +68,15 @@ export const rooms: Room[] = [
     floorColor: "#20372f",
     objects: [
       {
-        id: "resume-terminal",
-        title: "Resume Terminal",
-        kind: "interactive",
-        x: 540,
-        y: 505,
-        radius: 160,
-        summary: "Resume, education, experience, and CV.",
-        sprite: "/sprites/pc.png",
-        modal: {
-          title: "Resume Terminal",
-          sections: [
-            {
-              heading: "Name",
-              body: "Nurzhan Bekmurat.",
-            },
-            {
-              heading: "Current status",
-              body: "Cybersecurity student at Astana IT University building practical web, backend, and security projects.",
-            },
-            {
-              heading: "Experience",
-              body: "Focused on Python, Django, PostgreSQL, Linux, security fundamentals, and interactive web interfaces.",
-            },
-          ],
-          actions: [
-            { label: "Download CV", href: "/cv.pdf" },
-            { label: "Open GitHub", href: "https://github.com/", variant: "secondary" },
-            { label: "Open LinkedIn", href: "https://www.linkedin.com/", variant: "secondary" },
-          ],
-        },
-      },
-      {
         id: "skills-display",
         title: "Skills Display",
         kind: "interactive",
         x: 860,
-        y: 505,
+        y: 460,
         radius: 160,
         summary: "Backend, DevOps, and core tooling.",
         sprite: "/sprites/chalk_board.jpg",
+        scale: 1.25,
         modal: {
           title: "Skills",
           sections: [
@@ -127,6 +96,43 @@ export const rooms: Room[] = [
           actions: [],
         },
       },
+      {
+        id: "resume-terminal",
+        title: "Resume Terminal",
+        kind: "interactive",
+        x: 540,
+        y: 505,
+        radius: 160,
+        summary: "Resume, education, experience, and CV.",
+        sprite: "/sprites/pc.png",
+        hasDesk: true,
+        modal: {
+          title: "Resume Terminal",
+          sections: [
+            {
+              heading: "Name",
+              body: "Nurzhan Bekmurat.",
+            },
+            {
+              heading: "Current status",
+              body: "Cybersecurity student at Astana IT University building practical web, backend, and security projects.",
+            },
+            {
+              heading: "Experience",
+              body: "Focused on Python, Django, PostgreSQL, Linux, security fundamentals, and interactive web interfaces.",
+            },
+          ],
+          actions: [
+            { label: "Download CV", href: "/cv.pdf" },
+            { label: "Open GitHub", href: "https://github.com/Scirtor", variant: "secondary" },
+            {
+              label: "Open LinkedIn",
+              href: "https://www.linkedin.com/in/%D0%BD%D1%83%D1%80%D0%B6%D0%B0%D0%BD-%D0%B1%D0%B5%D0%BA%D0%BC%D1%83%D1%80%D0%B0%D1%82-996863316/",
+              variant: "secondary",
+            },
+          ],
+        },
+      },
     ],
   },
   {
@@ -137,25 +143,6 @@ export const rooms: Room[] = [
     floorColor: "#342642",
     objects: [
       {
-        id: "ctf-console",
-        title: "CTF Console",
-        kind: "interactive",
-        x: 430,
-        y: 505,
-        radius: 160,
-        summary: "Labs and security practice.",
-        modal: {
-          title: "CTF Console",
-          sections: [
-            {
-              heading: "Practice",
-              body: "A future home for CTF achievements, writeups, lab notes, and security learning artifacts.",
-            },
-          ],
-          actions: [],
-        },
-      },
-      {
         id: "tool-wall",
         title: "Security Tool Wall",
         kind: "interactive",
@@ -163,12 +150,36 @@ export const rooms: Room[] = [
         y: 505,
         radius: 160,
         summary: "Tools and methodology.",
+        sprite: "/sprites/tools_wall.png",
+        spriteFill: true,
+        scale: 1.2,
         modal: {
           title: "Security Tool Wall",
           sections: [
             {
               heading: "Tooling",
               body: "Linux tools, network inspection, web security basics, documentation habits, and repeatable lab workflows.",
+            },
+          ],
+          actions: [],
+        },
+      },
+      {
+        id: "ctf-console",
+        title: "CTF Console",
+        kind: "interactive",
+        x: 430,
+        y: 505,
+        radius: 160,
+        summary: "Labs and security practice.",
+        sprite: "/sprites/pc.png",
+        hasDesk: true,
+        modal: {
+          title: "CTF Console",
+          sections: [
+            {
+              heading: "Practice",
+              body: "A future home for CTF achievements, writeups, lab notes, and security learning artifacts.",
             },
           ],
           actions: [],

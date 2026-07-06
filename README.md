@@ -24,7 +24,7 @@ data/
   rooms.ts            Room and object definitions (content lives here)
   types.ts            Shared types for rooms/objects/modals
 public/assets/characters/  Player sprite frames (idle + 4-directional walk cycles)
-sprites/              Room object art (used by object nodes on the canvas)
+public/sprites/       Room object art (used by object nodes on the canvas)
 ```
 
 ## Rooms & objects

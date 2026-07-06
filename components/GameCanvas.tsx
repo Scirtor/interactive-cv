@@ -26,6 +26,9 @@ const MOBILE_BREAKPOINT = 620;
 const MOBILE_OBJECT_TOP = 210;
 const MOBILE_OBJECT_BOTTOM = GROUND_Y - 60;
 const WALK_ARRIVE_DISTANCE = 6;
+const MOBILE_WALK_TARGET_OFFSET_X = -60;
+const MOBILE_WALK_TARGET_OFFSET_Y = 20;
+const GRID_TILE_SIZE = 40;
 
 const PLAYER_ANIMATION_PATHS = {
   idle: [
@@ -237,8 +240,12 @@ export function GameCanvas({
             if (isMobile) {
               walkTargetRef.current = {
                 object,
-                x: position.x,
-                y: clamp(position.y + 70, PLAYER_MIN_Y, PLAYER_START_Y),
+                x: position.x + MOBILE_WALK_TARGET_OFFSET_X,
+                y: clamp(
+                  position.y + MOBILE_WALK_TARGET_OFFSET_Y,
+                  PLAYER_MIN_Y,
+                  PLAYER_START_Y,
+                ),
               };
             } else {
               activateObject(object);
@@ -489,11 +496,11 @@ function playerAnimationForMovement(horizontal: number, vertical: number): Playe
 
 function drawGrid(layer: Container) {
   const lines = new Graphics();
-  for (let x = 0; x <= WORLD_WIDTH; x += 160) {
-    lines.moveTo(x, 100).lineTo(x, GROUND_Y).stroke({ color: "#ffffff", alpha: 0.035, width: 2 });
+  for (let x = 0; x <= WORLD_WIDTH; x += GRID_TILE_SIZE) {
+    lines.moveTo(x, 100).lineTo(x, GROUND_Y).stroke({ color: "#ffffff", alpha: 0.07, width: 1 });
   }
-  for (let y = 140; y <= GROUND_Y; y += 105) {
-    lines.moveTo(0, y).lineTo(WORLD_WIDTH, y).stroke({ color: "#ffffff", alpha: 0.03, width: 2 });
+  for (let y = 100; y <= GROUND_Y; y += GRID_TILE_SIZE) {
+    lines.moveTo(0, y).lineTo(WORLD_WIDTH, y).stroke({ color: "#ffffff", alpha: 0.07, width: 1 });
   }
   layer.addChild(lines);
 }
@@ -552,15 +559,36 @@ function createObjectNode(object: PortfolioObject, position: { x: number; y: num
     .rect(-64, -82, 128, 68)
     .fill(object.kind === "navigation" ? "#183349" : "#17342a");
 
+  shape.alpha = object.sprite ? 0 : 1;
   node.addChild(shape);
+
+  if (object.hasDesk) {
+    const desk = new Graphics()
+      .rect(-85, 24, 170, 8)
+      .fill("#8a5a34")
+      .rect(-85, 32, 170, 12)
+      .fill("#5b3a20")
+      .rect(-75, 44, 10, 16)
+      .fill("#452c17")
+      .rect(65, 44, 10, 16)
+      .fill("#452c17");
+    node.addChild(desk);
+  }
 
   // Add sprite image if available and loaded
   if (spriteTexture) {
     const sprite = new Sprite(spriteTexture);
-    sprite.width = 110;
-    sprite.height = 55;
-    sprite.x = -55;
-    sprite.y = -27.5;
+    if (object.spriteFill) {
+      sprite.width = 184;
+      sprite.height = 150;
+      sprite.x = -92;
+      sprite.y = -118;
+    } else {
+      sprite.width = 135;
+      sprite.height = 120;
+      sprite.x = -67.5;
+      sprite.y = -82;
+    }
     node.addChild(sprite);
   }
 
@@ -592,6 +620,7 @@ function createObjectNode(object: PortfolioObject, position: { x: number; y: num
   hint.y = 86;
 
   node.addChild(title, hint);
+  node.scale.set(object.scale ?? 1);
   return node;
 }
 
