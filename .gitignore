@@ -30,3 +30,6 @@ yarn-error.log*
 
 # turbopack panic logs
 *.log
+
+# local design docs
+*.docx
