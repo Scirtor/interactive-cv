@@ -25,7 +25,7 @@ export function Header({ flagState, onFlagSubmit, onNavigate }: HeaderProps) {
         <span className="brand-mark">NB</span>
         <span className="brand-text">
           <strong>Nurzhan Bekmurat</strong>
-          <span>Cybersecurity Student</span>
+          <span>Junior Cybersecurity Specialist</span>
         </span>
       </div>
 

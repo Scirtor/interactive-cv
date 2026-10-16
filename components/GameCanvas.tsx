@@ -204,7 +204,7 @@ export function GameCanvas({
             try {
               const texture = await Assets.load<Texture>(obj.sprite!);
               spriteTextures.set(obj.id, texture);
-            } catch (e) {
+            } catch {
               // Silently fail if sprite doesn't load
             }
           });

@@ -62,3 +62,14 @@ docker run -p 3000:3000 interactive-cv
 ```
 
 The image is a multi-stage build that installs dependencies, runs `next build` with standalone output, and ships only the production server, static assets, and `sprites/`.
+
+## Professional portfolio
+
+The home page is a server-rendered professional overview with two academic security case summaries, selected software projects and independently verifiable learning credentials. Security case content lives in `data/portfolio.ts`; public pages are generated at `/cases/[slug]`.
+
+The Pixi.js room is optional. Its code loads only after selecting **Enter interactive room**, so reading the portfolio does not require WebGL or game input. `components/PortfolioGame.tsx` keeps the original room experience.
+
+- `/resume` is the current, printable professional profile.
+- `/cv.pdf` redirects to `/resume`; the outdated PDF is no longer shipped.
+- Professional contact links are LinkedIn, the Scirtor GitHub profile and DetectiveZhang. Gaming/entertainment accounts and their shared Telegram are intentionally excluded.
+- Case summaries identify academic scope and analytical limitations. Original private worksheets, account details, suspicious destinations and executables are not distributed.

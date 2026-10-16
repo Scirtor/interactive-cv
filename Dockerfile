@@ -7,7 +7,8 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm run build
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN NODE_OPTIONS=--max-old-space-size=768 npm run build
 
 FROM node:22-alpine AS runner
 WORKDIR /app

@@ -29,32 +29,40 @@ export const rooms: Room[] = [
             },
           ],
           actions: [
-            { label: "Repository", href: "https://github.com/", variant: "secondary" },
+            {
+              label: "Repository",
+              href: "https://github.com/Scirtor/django-project",
+              variant: "secondary",
+            },
           ],
         },
       },
       {
-        id: "fastdown-console",
-        title: "FastDown Bot Console",
+        id: "starjump-console",
+        title: "StarJump Console",
         kind: "interactive",
         x: 850,
         y: 505,
         radius: 150,
-        summary: "Automation and bot work.",
+        summary: "College project rebuilt for browser and Android.",
         modal: {
-          title: "FastDown Bot",
+          title: "StarJump",
           sections: [
             {
               heading: "Overview",
-              body: "A bot-oriented automation project focused on fast commands, simple user flow, and reliable server behavior.",
+              body: "A Python/Pygame platformer originally developed for my 2024 college graduation project, rebuilt for browser play with touch controls and an offline Android preview.",
             },
             {
               heading: "Focus",
-              body: "Command handling, API integration, deployment discipline, and clean operational feedback.",
+              body: "Game mechanics, browser delivery, touch input and an offline Android build.",
             },
           ],
           actions: [
-            { label: "Repository", href: "https://github.com/", variant: "secondary" },
+            {
+              label: "Repository",
+              href: "https://github.com/Scirtor/StarJump",
+              variant: "secondary",
+            },
           ],
         },
       },
@@ -74,23 +82,23 @@ export const rooms: Room[] = [
         x: 860,
         y: 460,
         radius: 160,
-        summary: "Backend, DevOps, and core tooling.",
+        summary: "Pentesting, SOC foundations, Python and Linux.",
         sprite: "/sprites/chalk_board.jpg",
         scale: 1.25,
         modal: {
           title: "Skills",
           sections: [
             {
-              heading: "Backend",
-              body: "Python, Django, Django REST Framework, PostgreSQL, authentication, data modeling, and API design.",
+              heading: "Security practice",
+              body: "Web security labs, CTFs, OSINT, email triage and static executable analysis. Tools include Burp Suite, Nmap and Wireshark.",
             },
             {
               heading: "DevOps",
               body: "Linux, shell workflows, Nginx, VPS deployment, environment setup, logs, and service-minded debugging.",
             },
             {
-              heading: "Also",
-              body: "TypeScript and Next.js. Cybersecurity practice lives in the Security Lab.",
+              heading: "Development",
+              body: "Python, Django, PostgreSQL, TypeScript, Next.js and Python/Pygame. Building applications supports my understanding of security findings.",
             },
           ],
           actions: [],
@@ -114,8 +122,8 @@ export const rooms: Room[] = [
               body: "Nurzhan Bekmurat.",
             },
             {
-              heading: "Current status",
-              body: "Cybersecurity student at Astana IT University building practical web, backend, and security projects.",
+              heading: "Professional focus",
+              body: "Junior Cybersecurity Specialist focused on penetration testing and SOC analysis. College graduate in Information Systems; continuing cybersecurity education at Astana IT University.",
             },
             {
               heading: "Experience",
@@ -123,8 +131,12 @@ export const rooms: Room[] = [
             },
           ],
           actions: [
-            { label: "Download CV", href: "/cv.pdf" },
-            { label: "Open GitHub", href: "https://github.com/Scirtor", variant: "secondary" },
+            { label: "View professional profile", href: "/resume" },
+            {
+              label: "Open GitHub",
+              href: "https://github.com/Scirtor",
+              variant: "secondary",
+            },
             {
               label: "Open LinkedIn",
               href: "https://www.linkedin.com/in/%D0%BD%D1%83%D1%80%D0%B6%D0%B0%D0%BD-%D0%B1%D0%B5%D0%BA%D0%BC%D1%83%D1%80%D0%B0%D1%82-996863316/",
@@ -166,23 +178,33 @@ export const rooms: Room[] = [
       },
       {
         id: "ctf-console",
-        title: "CTF Console",
+        title: "Security Case Console",
         kind: "interactive",
         x: 430,
         y: 505,
         radius: 160,
-        summary: "Labs and security practice.",
+        summary: "Email triage and static analysis lab reports.",
         sprite: "/sprites/pc.png",
         hasDesk: true,
         modal: {
-          title: "CTF Console",
+          title: "Security Case Console",
           sections: [
             {
               heading: "Practice",
-              body: "A future home for CTF achievements, writeups, lab notes, and security learning artifacts.",
+              body: "Read two completed academic case summaries: phishing email triage and static analysis of a supplied executable. Each documents the observations, reasoning and limitations of the exercise.",
             },
           ],
-          actions: [],
+          actions: [
+            {
+              label: "Email triage case",
+              href: "/cases/phishing-email-analysis",
+            },
+            {
+              label: "Static analysis case",
+              href: "/cases/static-executable-analysis",
+              variant: "secondary",
+            },
+          ],
         },
       },
     ],
